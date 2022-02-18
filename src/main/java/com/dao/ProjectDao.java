@@ -18,7 +18,7 @@ public class ProjectDao {
 	public void insertProject(ProjectBean project) {
 		stmt.update("insert into project (projectname,technology,startdate,enddate,estimatedhours) values (?,?,?,?,?)",
 				project.getProjectName(), project.getTechnology(), project.getStartDate(), project.getEndDate(),
-				project.getEstimatedHours());
+				project.getEstimatedHours ());
 
 	}
 

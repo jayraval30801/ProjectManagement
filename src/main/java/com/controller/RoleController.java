@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bean.RoleBean;
 import com.dao.RoleDao;
@@ -21,12 +22,6 @@ public class RoleController {
 	@GetMapping("/newrole")
 	public String newRole() {
 		return "Role";
-	}
-	
-	@GetMapping("/updaterole")
-	public String updateRole()
-	{
-		return "Edit";
 	}
 	
 	@PostMapping("/saverole")
@@ -48,5 +43,19 @@ public class RoleController {
 		List<RoleBean> roles = roledao.getAllRoles();
 		model.addAttribute("roles", roles);
 		return "ListRoles";
+	}
+	
+	@GetMapping("/editrole")
+	public String editRole(@RequestParam("roleId") int roleId , Model model)
+	{
+		RoleBean role = roledao.getRoleById(roleId);
+		model.addAttribute("role", role);
+		return "EditRole";
+	}
+	@PostMapping("/updaterole")
+	public String updateRole(RoleBean role)
+	{
+		roledao.updateRole(role);
+		return "redirect:/listroles";
 	}
 }
