@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bean.RoleBean;
 import com.bean.StatusBean;
@@ -50,5 +51,18 @@ public class StatusController {
 		List<StatusBean> statuses = statusdao.getAllStatuses();
 		model.addAttribute("statuses", statuses);
 		return "ListStatuses";
+	}
+	@GetMapping("/editstatus")
+	public String editStatus(@RequestParam("statusId") int statusId , Model model)
+	{
+		StatusBean status = statusdao.getStatusById(statusId);
+		model.addAttribute("status", status);
+		return "EditStatus";
+	}
+	@PostMapping("/updatestatus")
+	public String updateStatus(StatusBean status)
+	{
+		statusdao.updateStatus(status);
+		return "redirect:/liststatuses";
 	}
 }

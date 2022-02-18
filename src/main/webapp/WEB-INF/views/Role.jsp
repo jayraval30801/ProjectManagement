@@ -8,10 +8,8 @@
 </head>
 <body>
 	<form action="saverole" method="post">
-	
 		Enter role name: <input type="text" name="roleName"><br>
 		<input type="submit" value="Submit"><br>
-	
 	</form>
 </body>
 </html>

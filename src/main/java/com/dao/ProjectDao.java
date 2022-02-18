@@ -31,5 +31,15 @@ public class ProjectDao {
 		stmt.update("delete from project where projectid = ?", projectId);
 	}
 
+	public ProjectBean getProjectById(int projectId) {
+		ProjectBean project = stmt.queryForObject("select * from project where projectid = ?",
+				new BeanPropertyRowMapper<ProjectBean>(ProjectBean.class), new Object[] { projectId });
+		return project;
+	}
+
+	public void updateProject(ProjectBean project) {
+		stmt.update("update project set projectname = ?,technology=?,startdate=?,enddate=?,estimatedhours=?  where projectid=? ",
+				project.getProjectName(), project.getTechnology(),project.getStartDate(),project.getEndDate(),project.getEstimatedHours(),project.getProjectId());
+	}
 
 }

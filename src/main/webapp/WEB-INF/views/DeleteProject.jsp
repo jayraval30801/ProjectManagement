@@ -7,7 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-Enter new RoleName : <input type="text" name="RoleName"><br>
-<input type="submit" value="Submit">
+	<form action="deleteproject" method="post">
+		Enter projectID you want to delete :<input type="number" value="projectId">
+		<input type="submit" value="submit">
+	</form>
+	
 </body>
 </html>
