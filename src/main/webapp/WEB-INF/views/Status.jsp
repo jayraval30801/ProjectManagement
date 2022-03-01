@@ -4,14 +4,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Status</title>
 </head>
 <body>
 	<form action="savestatus" method="post">
-	
 		Enter status name: <input type="text" name="statusName"><br>
 		<input type="submit" value="Submit"><br>
-	
 	</form>
 </body>
 </html>

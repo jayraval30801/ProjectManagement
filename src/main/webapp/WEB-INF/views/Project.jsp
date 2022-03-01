@@ -10,9 +10,9 @@
 	<form action="saveproject" method="post">
 		ProjectName : <input type="text" name="projectName"><br>
 		Technology : <input type="text" name="technology"><br>
-		Start date : <input type="datetime" name="startDate"><br>
-		Ending date : <input type="datetime" name="endDate"><br>
-		Estimated Hours(in hours) : <input type="number" name="estimatedHour"><br>
+		Start date : <input type="text" name="startDate"><br>
+		Ending date : <input type="text" name="endDate"><br>
+		Estimated Hours(in hours) : <input type="text" name="estimatedHours"><br>
 		<input type="submit" value="Add Project">
 	</form>
 </body>

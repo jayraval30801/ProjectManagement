@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bean.ProjectBean;
-import com.bean.StatusBean;
 import com.dao.ProjectDao;
 
 @Controller
@@ -28,13 +27,12 @@ public class ProjectController {
 	@PostMapping(value = "/saveproject")
 	public String saveProject(ProjectBean project) {
 		System.out.println(project.getProjectName());
-		System.out.println(project.getEstimatedHours());
 		System.out.println(project.getTechnology());
 		System.out.println(project.getStartDate());
 		System.out.println(project.getEndDate());
+		System.out.println(project.getEstimatedHours());
 		projectDao.insertProject(project);
 		return "redirect:/listprojects";
-
 	}
 
 	@GetMapping(value = "/listprojects")

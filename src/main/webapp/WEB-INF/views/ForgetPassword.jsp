@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,9 +8,10 @@
 </head>
 <body>
 	<h2>Forget Password</h2>
-	<form method="post" action="forgetpassword">
+	<form action="forgetpassword" method="post" >
 		Enter EmailId: <input type="text" name="email"><br> <br>
-		<input type="submit" value="Reset">
+		<input type="submit" value="Call Me Back">
 	</form>
+	${error}
 </body>
 </html>

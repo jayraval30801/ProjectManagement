@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,8 +9,8 @@
 <body>
 	<form action="updaterole" method="post">
 		<input type="hidden" value="${role.roleId}" name="roleId" /><br>
-		RoleName : <input type="text" name="roleName" value="${role.roleName }"><br>
-		<input type="submit" value="Update Role">
+		RoleName : <input type="text" name="roleName"
+			value="${role.roleName }"><br> <input type="submit" value="Update Role">
 	</form>
 </body>
 </html>

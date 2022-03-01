@@ -18,12 +18,13 @@ public class ProjectDao {
 	public void insertProject(ProjectBean project) {
 		stmt.update("insert into project (projectname,technology,startdate,enddate,estimatedhours) values (?,?,?,?,?)",
 				project.getProjectName(), project.getTechnology(), project.getStartDate(), project.getEndDate(),
-				project.getEstimatedHours ());
+				project.getEstimatedHours());
 
 	}
 
 	public List<ProjectBean> getAllProjects() {
-		List<ProjectBean> project = stmt.query("select * from project",new BeanPropertyRowMapper<ProjectBean>(ProjectBean.class));
+		List<ProjectBean> project = stmt.query("select * from project",
+				new BeanPropertyRowMapper<ProjectBean>(ProjectBean.class));
 		return project;
 	}
 
@@ -38,8 +39,10 @@ public class ProjectDao {
 	}
 
 	public void updateProject(ProjectBean project) {
-		stmt.update("update project set projectname = ?,technology=?,startdate=?,enddate=?,estimatedhours=?  where projectid=? ",
-				project.getProjectName(), project.getTechnology(),project.getStartDate(),project.getEndDate(),project.getEstimatedHours(),project.getProjectId());
+		stmt.update(
+				"update project set projectname = ?,technology=?,startdate=?,enddate=?,estimatedhours=?  where projectid=? ",
+				project.getProjectName(), project.getTechnology(), project.getStartDate(), project.getEndDate(),
+				project.getEstimatedHours(), project.getProjectId());
 	}
 
 }
