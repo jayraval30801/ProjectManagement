@@ -8,7 +8,7 @@
 </head>
 <body>
 	<form action="deleteuser" method="post">
-		Enter userID you want to delete :<input type="number" value=userId">
+		Enter userID you want to delete :<input type="number" value="userId">
 		<input type="submit" value="submit">
 	</form>
 </body>

@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 package com.dao;
 
 import java.util.List;
@@ -17,70 +17,34 @@ public class ProjectDao {
 	JdbcTemplate stmt;
 
 	public void insertProject(ProjectBean project) {
-		stmt.update("insert into project (projectname,technology,startdate,enddate,estimatedhours) values (?,?,?,?,?)",
+		stmt.update(
+				"insert into project (projectname,technology,startdate,enddate,estimatedhours,description,statusid) values (?,?,?,?,?,?,?)",
 				project.getProjectName(), project.getTechnology(), project.getStartDate(), project.getEndDate(),
-				project.getEstimatedHours());
-
+				project.getEstimatedHours(), project.getDescription(), project.getStatusId());
 	}
 
 	public List<ProjectBean> getAllProjects() {
-		List<ProjectBean> project = stmt.query("select * from project",
+		List<ProjectBean> project = stmt.query(
+				"select p.*,s.statusname from project p ,status s where p.statusid = s.statusid",
 				new BeanPropertyRowMapper<ProjectBean>(ProjectBean.class));
 		return project;
 	}
 
-	public void deleteProject(int projectId) {
-		stmt.update("delete from project where projectid = ?", projectId);
-	}
-
 	public ProjectBean getProjectById(int projectId) {
-		ProjectBean project = stmt.queryForObject("select * from project where projectid = ?",
-				new BeanPropertyRowMapper<ProjectBean>(ProjectBean.class), new Object[] { projectId });
-		return project;
+		try {
+			return stmt.queryForObject("select * from project where projectid = ?",
+					new BeanPropertyRowMapper<ProjectBean>(ProjectBean.class), new Object[] { projectId });
+		} catch (Exception e) {
+			System.out.println("SMW in projectDao --> getProjectById()");
+		}
+		return null;
 	}
 
 	public void updateProject(ProjectBean project) {
 		stmt.update(
-				"update project set projectname = ?,technology=?,startdate=?,enddate=?,estimatedhours=?  where projectid=? ",
+				"update project set projectname = ?,technology=?,startdate=?,enddate=?,estimatedhours=?,description=?,statusname=?  where projectid=? ",
 				project.getProjectName(), project.getTechnology(), project.getStartDate(), project.getEndDate(),
-				project.getEstimatedHours(), project.getProjectId());
+				project.getEstimatedHours(), project.getDescription(), project.getStatusName(), project.getProjectId());
 	}
 
 }
-=======
-package com.dao;
-
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Repository;
-
-import com.bean.ProjectBean;
-
-@Repository
-public class ProjectDao {
-
-	@Autowired
-	JdbcTemplate stmt;
-
-	public void insertProject(ProjectBean project) {
-		stmt.update("insert into project (projectname,technology,startdate,enddate,estimatedhours) values (?,?,?,?,?)",
-				project.getProjectName(), project.getTechnology(), project.getStartDate(), project.getEndDate(),
-				project.getEstimatedHours ());
-
-	}
-
-	public List<ProjectBean> getAllProjects() {
-		List<ProjectBean> project = stmt.query("select * from project",new BeanPropertyRowMapper<ProjectBean>(ProjectBean.class));
-		return project;
-	}
-
-	public void deleteProject(int projectId) {
-		stmt.update("delete from project where projectid = ?", projectId);
-	}
-
-
-}
->>>>>>> 455dbe482ac83868d626a239d3f0cb0bc5946070

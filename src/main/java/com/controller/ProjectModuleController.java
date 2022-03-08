@@ -9,12 +9,12 @@ import com.bean.ProjectModuleBean;
 @Controller
 public class ProjectModuleController {
 		
-		@GetMapping("\newprojctmodule")
+		@GetMapping("/newprojctmodule")
 		public String newProjectModule()
 		{
 			return "ProjectModule";
 		}
-		@PostMapping("saveprojectmodule")
+		@PostMapping("/saveprojectmodule")
 		public String  saveProjectModule(ProjectModuleBean projectmodule)
 		{
 			projectmodule.getModuleId();
@@ -24,7 +24,7 @@ public class ProjectModuleController {
 			projectmodule.getEstimatedours();
 			return "redirect:/listProjectModule"; 
 		}
-		@GetMapping("???listprojectModule")
+		@GetMapping("/listprojectModule")
 		public String listProjectModule()
 		{
 			return "Home";

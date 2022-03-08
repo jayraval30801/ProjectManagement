@@ -8,8 +8,8 @@
 </head>
 <body>
 	<form action="updatestatus" method="post">
-		<input type="hidden" value="${status.statusId}" name="statusId" /><br>
-		StatusName : <input type="text" name="statusName" value="${status.statusName}"><br>
+		<input type="hidden" value="${statuses.statusId}" name="statusId" /><br>
+		StatusName : <input type="text" name="statusName" value="${statuses.statusName}"><br>
 		<input type="submit" value="Update Status">
 	</form>
 </body>
