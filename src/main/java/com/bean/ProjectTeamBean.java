@@ -11,7 +11,16 @@ public class ProjectTeamBean {
 	private String firstName;
 	private String email;
 	private String roleName;
+	private String statusName;
 	
+	public String getStatusName() {
+		return statusName;
+	}
+
+	public void setStatusName(String statusName) {
+		this.statusName = statusName;
+	}
+
 	public String getProjectName() {
 		return projectName;
 	}

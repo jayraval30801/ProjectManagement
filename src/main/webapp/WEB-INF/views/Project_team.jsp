@@ -56,7 +56,7 @@
 											<div class="col-sm-12">
 												<div class="card">
 													<div class="card-header">
-														<h5><a href="assignmember">Assign Member</a></h5>
+														<h5><a href="addteammember/projectid=?">Assign Member</a></h5>
 													</div>
 													<div class="card-block">
 														<div class="dt-responsive table-responsive">

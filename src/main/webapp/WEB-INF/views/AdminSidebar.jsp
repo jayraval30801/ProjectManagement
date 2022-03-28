@@ -1,38 +1,158 @@
-<div id="sidebar" class="active">
-	<div class="sidebar-wrapper active ps ps--active-y">
-		<div class="sidebar-header">
-			<div class="d-flex justify-content-between">
-				<div class="logo">
-					<a href="/admincontroller"><img
-						src="assets/images/logo/logo.png" alt="Logo" srcset=""></a>
-				</div>
-				<div class="toggler">
-					<a href="#" class="sidebar-hide d-xl-none d-block"><i
-						class="bi bi-x bi-middle"></i></a>
-				</div>
-			</div>
+
+<!--**********************************
+            Sidebar start
+        ***********************************-->
+<div class="deznav">
+	<div class="deznav-scroll mm-active ps ps--active-y">
+		<ul class="metismenu mm-show" id="menu">
+			<li class="nav-label first">Main Menu</li>
+			<li><a class="has-arrow ai-icon" href="javascript:void()"
+				aria-expanded="false"> <i class="flaticon-381-network"></i> <span
+					class="nav-text">Lists</span>
+			</a>
+				<ul aria-expanded="false" class="mm-collapse left" style="">
+					<li><a href="getallusers">Users</a></li>
+					<li><a href="listprojects">Projects</a></li>
+					<li><a href="listroles">Roles</a></li>
+					<li><a href="liststatuses">Statuses</a></li>
+					<li><a href="listtasks">Tasks</a></li>
+					<li><a href="getallmodules">Modules</a></li>
+				</ul></li>
+			<li><a class="has-arrow ai-icon" href="javascript:void()"
+				aria-expanded="false"> <i class="flaticon-077-menu-1"></i> <span
+					class="nav-text">Apps</span>
+			</a>
+				<ul aria-expanded="false" class="mm-collapse left" style="">
+					<li><a href="page-chat.html">Chat<span
+							class="badge badge-xs badge-danger">New</span></a></li>
+					<li><a class="has-arrow" href="javascript:void(0);"
+						aria-expanded="false">Project<span
+							class="badge badge-xs badge-danger">New</span></a>
+						<ul aria-expanded="false" class="mm-collapse left" style="">
+							<li><a href="project-list.html">Project List</a></li>
+							<li><a href="project-card.html">Project Card</a></li>
+						</ul></li>
+					<li><a class="has-arrow" href="javascript:void(0);"
+						aria-expanded="false">User<span
+							class="badge badge-xs badge-danger">New</span></a>
+						<ul aria-expanded="false" class="mm-collapse left" style="">
+							<li><a href="user-list-datatable.html">User List</a></li>
+							<li><a href="user-list-column.html">User Card</a></li>
+						</ul></li>
+					<li><a class="has-arrow" href="javascript:void(0);"
+						aria-expanded="false">Contact<span
+							class="badge badge-xs badge-danger">New</span></a>
+						<ul aria-expanded="false" class="mm-collapse left" style="">
+							<li><a href="contact-list.html">Contact List</a></li>
+							<li><a href="contact-card.html">Contact Card</a></li>
+						</ul></li>
+					<li><a class="has-arrow" href="javascript:void()"
+						aria-expanded="false">Email</a>
+						<ul aria-expanded="false" class="mm-collapse left" style="">
+							<li><a href="email-compose.html">Compose</a></li>
+							<li><a href="email-inbox.html">Inbox</a></li>
+							<li><a href="email-read.html">Read</a></li>
+						</ul></li>
+					<li><a href="app-calender.html">Calendar</a></li>
+					<li><a class="has-arrow" href="javascript:void()"
+						aria-expanded="false">Shop</a>
+						<ul aria-expanded="false" class="mm-collapse left" style="">
+							<li><a href="ecom-product-grid.html">Product Grid</a></li>
+							<li><a href="ecom-product-list.html">Product List</a></li>
+							<li><a href="ecom-product-detail.html">Product Details</a></li>
+							<li><a href="ecom-product-order.html">Order</a></li>
+							<li><a href="ecom-checkout.html">Checkout</a></li>
+							<li><a href="ecom-invoice.html">Invoice</a></li>
+							<li><a href="ecom-customers.html">Customers</a></li>
+						</ul></li>
+				</ul></li>
+
+			<li class="nav-label">components</li>
+			<li><a class="has-arrow ai-icon" href="javascript:void()"
+				aria-expanded="false"> <i class="flaticon-003-diamond"></i> <span
+					class="nav-text">Bootstrap</span>
+			</a>
+				<ul aria-expanded="false" class="mm-collapse left" style="">
+					<li><a href="ui-accordion.html">Accordion</a></li>
+					<li><a href="ui-alert.html">Alert</a></li>
+					<li><a href="ui-badge.html">Badge</a></li>
+					<li><a href="ui-button.html">Button</a></li>
+					<li><a href="ui-modal.html">Modal</a></li>
+					<li><a href="ui-button-group.html">Button Group</a></li>
+					<li><a href="ui-list-group.html">List Group</a></li>
+					<li><a href="ui-media-object.html">Media Object</a></li>
+					<li><a href="ui-card.html">Cards</a></li>
+					<li><a href="ui-carousel.html">Carousel</a></li>
+					<li><a href="ui-dropdown.html">Dropdown</a></li>
+					<li><a href="ui-popover.html">Popover</a></li>
+					<li><a href="ui-progressbar.html">Progressbar</a></li>
+					<li><a href="ui-tab.html">Tab</a></li>
+					<li><a href="ui-typography.html">Typography</a></li>
+					<li><a href="ui-pagination.html">Pagination</a></li>
+					<li><a href="ui-grid.html">Grid</a></li>
+
+				</ul></li>
+			<li><a class="has-arrow ai-icon" href="javascript:void()"
+				aria-expanded="false"> <i class="flaticon-053-heart"></i> <span
+					class="nav-text">Plugins</span>
+			</a>
+				<ul aria-expanded="false" class="mm-collapse left" style="">
+					<li><a href="uc-select2.html">Select 2</a></li>
+					<li><a href="uc-nestable.html">Nestedable</a></li>
+					<li><a href="uc-noui-slider.html">Noui Slider</a></li>
+					<li><a href="uc-sweetalert.html">Sweet Alert</a></li>
+					<li><a href="uc-toastr.html">Toastr</a></li>
+					<li><a href="map-jqvmap.html">Jqv Map</a></li>
+					<li><a href="uc-lightgallery.html">Light Gallery</a></li>
+				</ul></li>
+			<li><a href="widget-basic.html" class="ai-icon"
+				aria-expanded="false"> <i class="flaticon-381-settings-2"></i> <span
+					class="nav-text">Widget</span>
+			</a></li>
+			<li><a class="has-arrow ai-icon" href="javascript:void()"
+				aria-expanded="false"> <i class="flaticon-044-file"></i> <span
+					class="nav-text" href="">Reports</span>
+			</a>
+				<ul aria-expanded="false" class="mm-collapse left" style="">
+					<li><a href="projectreport?statusId=0">Project</a></li>
+					<li><a href="userreport?roleId=0">Users</a></li>
+					<li><a href="modulereport?projectId=0">Module</a></li>
+					<li><a href="taskreport?moduleId=0">Tasks</a></li>
+				</ul></li>
+
+			<li><a class="has-arrow ai-icon" href="javascript:void()"
+				aria-expanded="false"> <i class="flaticon-049-copy"></i> <span
+					class="nav-text">Pages</span>
+			</a>
+				<ul aria-expanded="false" class="mm-collapse left" style="">
+					<li><a href="page-register.html">Register</a></li>
+					<li><a href="page-login.html">Login</a></li>
+					<li><a class="has-arrow" href="javascript:void()"
+						aria-expanded="false">Error</a>
+						<ul aria-expanded="false" class="mm-collapse left" style="">
+							<li><a href="page-error-400.html">Error 400</a></li>
+							<li><a href="page-error-403.html">Error 403</a></li>
+							<li><a href="page-error-404.html">Error 404</a></li>
+							<li><a href="page-error-500.html">Error 500</a></li>
+							<li><a href="page-error-503.html">Error 503</a></li>
+						</ul></li>
+					<li><a href="page-lock-screen.html">Lock Screen</a></li>
+				</ul></li>
+		</ul>
+		<div class="copyright">
+			<p class="fs-12">
+				Made with <span class=""></span> by Jay Raval
+			</p>
 		</div>
-		<div class="sidebar-menu">
-			<ul class="menu">
-				<li class="sidebar-title">Menu</li>
-
-				<li class="sidebar-item active "><a href="index.html"
-					class="sidebar-link"> <i class="bi bi-grid-fill"></i> <span>Dashboard</span>
-				</a></li>
-
-				<li class="sidebar-item  has-sub"><a href="#"
-					class="sidebar-link"> <i class="bi bi-stack"></i> <span>List</span>
-				</a>
-					<ul class="submenu ">
-						<li class="submenu-item "><a href="listprojects">Project</a>
-						</li>
-						<li class="submenu-item "><a href="getallusers">Users</a></li>
-						<li class="submenu-item "><a href="listroles">Roles</a></li>
-						<li class="submenu-item "><a href="liststatuses">Status</a></li>
-						<li class="submenu-item "><a href="viewteam">Project
-								Teams</a></li>
-					</ul></li>
-			</ul>
+		<div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+			<div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+		</div>
+		<div class="ps__rail-y" style="top: 0px; height: 642px; right: 0px;">
+			<div class="ps__thumb-y" tabindex="0"
+				style="top: 0px; height: 349px;"></div>
 		</div>
 	</div>
 </div>
+<!--**********************************
+            Sidebar end
+        ***********************************-->

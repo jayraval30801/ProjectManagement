@@ -18,16 +18,13 @@ public class ProjectTeamDao {
 	@Autowired
 	JdbcTemplate stmt;
 
-	public void insertProjectTeam(ProjectTeamBean projectteam) {
-		stmt.update("insert into projectteams (projectid,userid) values (?,?)", projectteam.getProjectId(),
-				projectteam.getUserId());
+	public void insertProjectTeam(ProjectTeamBean projectteam)
+	{
+		stmt.update("insert into projectteams (projectid,userid) values (?,?)", projectteam.getProjectId(),projectteam.getUserId());
 	}
-
-	@GetMapping(value = "/listprojectteams")
-	public List<ProjectTeamBean> getTeamMembers(int projectId) {
-		return stmt.query("select p.projectName,p.projectid,u.*,r.rolename,pt.active from projectteams pt,users u ,project p,role r where pt.userid = u.userid and pt.projectid=p.projectid and pt.projectid = ? and u.roleid = r.roleid",
-				new BeanPropertyRowMapper<ProjectTeamBean>(ProjectTeamBean.class),new Object[] {projectId});
-
+	public List<ProjectTeamBean> getTeamMembers(int projectId)
+	{
+		return stmt.query("select p.projectname,p.projectid,u.*,r.rolename,pt.active from projectteams pt,users u ,project p,role r where pt.userid = u.userid and pt.projectid=p.projectid and pt.projectid = ? and u.roleid = r.roleid",new BeanPropertyRowMapper<ProjectTeamBean>(ProjectTeamBean.class),new Object[] {projectId});
 	}
 
 	public List<UserBean> getUsersForProject(int projectId) {
@@ -45,5 +42,8 @@ public class ProjectTeamDao {
 	public List<ProjectBean> getProjectByUserId(int userId)
 	{
 		return stmt.query("select * from  project where projectid in (select projectid from projectteams where userid = ? and active = 1)",new BeanPropertyRowMapper<ProjectBean>(ProjectBean.class),new Object[] {userId});
+	}
+	public void reassignTeamMember(int projectId, int userId) {
+		stmt.update("update projectteams set active = 1 where userid  = ? and projectid = ? ",userId,projectId);
 	}
 }

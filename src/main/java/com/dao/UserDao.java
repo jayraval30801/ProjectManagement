@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+
+import com.bean.ProjectBean;
 import com.bean.UserBean;
 
 @Repository
@@ -31,6 +33,7 @@ public class UserDao {
 	public UserBean getUserByEmail(String email) {
 		UserBean dbUser = null;
 		try {
+			
 
 			dbUser = stmt.queryForObject("select * from users where email = ?",
 					new BeanPropertyRowMapper<UserBean>(UserBean.class), new Object[] { email });
@@ -54,5 +57,11 @@ public class UserDao {
 		stmt.update("update users set firstname=?,email=?  where userid=? ", user.getFirstName(),
 				user.getEmail(),user.getUserId());
 	}
+
+	public List<UserBean> getAllUserByRole(int roleId) {
+		return stmt.query("select u.*,r.rolename from users u,role r where u.roleid = r.roleid and u.roleid  = ?",
+				new BeanPropertyRowMapper<UserBean>(UserBean.class),new Object[] {roleId});
+	}
+	
 
 }

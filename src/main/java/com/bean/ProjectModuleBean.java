@@ -5,10 +5,29 @@ public class ProjectModuleBean {
 	private int projectId;
 	private String moduleName;
 	private String description;
-	private int estimatedours;
-	private String status;
-	private String statusDate;
+	private int estimatedHours;
+	private int statusId;
+	private String statusName;
+	private String projectName;
 	
+	public String getProjectName() {
+		return projectName;
+	}
+	public void setProjectName(String projectName) {
+		this.projectName = projectName;
+	}
+	public int getStatusId() {
+		return statusId;
+	}
+	public void setStatusId(int statusId) {
+		this.statusId = statusId; 	
+	}
+	public String getStatusName() {
+		return statusName;
+	}
+	public void setStatusName(String statusName) {
+		this.statusName = statusName;
+	}
 	public int getModuleId() {
 		return moduleId;
 	}
@@ -33,24 +52,10 @@ public class ProjectModuleBean {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public int getEstimatedours() {
-		return estimatedours;
+	public int getEstimatedHours() {
+		return estimatedHours;
 	}
-	public void setEstimatedours(int estimatedours) {
-		this.estimatedours = estimatedours;
+	public void setEstimatedHours(int estimatedHours) {
+		this.estimatedHours = estimatedHours;
 	}
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
-	}
-	public String getStatusDate() {
-		return statusDate;
-	}
-	public void setStatusDate(String statusDate) {
-		this.statusDate = statusDate;
-	}
-	
-	
 }

@@ -69,4 +69,10 @@ public class ProjectTeamController {
 		projectteamDao.removeTeamMember(projectId, userId);
 		return "redirect:/viewteam?projectId=" + projectId;
 	}
+	@GetMapping("/reassignmember")
+	public String reassignMember(@RequestParam("projectId") int projectId, @RequestParam("userId")  int userId)
+	{
+		projectteamDao.reassignTeamMember(projectId,userId);
+		return "redirect:/viewteam?projectId= " + projectId;
+	}
 }

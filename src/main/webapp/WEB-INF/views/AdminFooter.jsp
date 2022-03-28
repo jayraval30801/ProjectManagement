@@ -1,14 +1,14 @@
-
-<footer>
-	<div class="footer clearfix mb-0 text-muted">
-		<div class="float-start">
-			<p>2021 © Jay</p>
+	<!--**********************************
+            Footer start
+        ***********************************-->
+		<div class="footer">
+			<div class="copyright">
+				<p>
+					Copyright © Designed &amp; Developed by <a href="../index.html"
+						target="_blank">Jay Raval</a> 2021
+				</p>
+			</div>
 		</div>
-		<div class="float-end">
-			<p>
-				Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span>
-				by <a href="http://ahmadsaugi.com">Jay Raval</a>
-			</p>
-		</div>
-	</div>
-</footer>
+		<!--**********************************
+            Footer end
+        ***********************************-->
