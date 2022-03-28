@@ -7,6 +7,6 @@
 <title>Developer</title>
 </head>
 <body>
-Developer Part
+
 </body>
 </html>

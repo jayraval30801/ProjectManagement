@@ -1,8 +1,6 @@
 package com.controller;
 
-import javax.servlet.http.HttpSession;
-
-import org.apache.catalina.mbeans.UserMBean;
+import javax.servlet.http.HttpSession; 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -14,12 +12,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bean.UserBean;
 import com.dao.UserDao;
+import com.service.EmailService;
 
 @Controller
 public class SessionController {
 
 	@Autowired
 	UserDao userDao;
+	
+	@Autowired
+	EmailService emailService;
+	
 
 	@Autowired
 	BCryptPasswordEncoder bcryptPasswordEncoder;
@@ -34,7 +37,7 @@ public class SessionController {
 //		return "Login";
 //	}
 
-	@PostMapping("/login")
+	@PostMapping("/saveuser")
 	public String authenticate(UserBean user, Model model, HttpSession session) {
 		boolean isCorrect = false;
 		UserBean dbUser = userDao.getUserByEmail(user.getEmail());
@@ -48,7 +51,7 @@ public class SessionController {
 		if (isCorrect == true) {
 				if (dbUser.getRoleId() == 11) {
 					return "redirect:/admincontroller";
-				} else if (dbUser.getRoleId() == 12) {
+				} else if (dbUser.getRoleId() == 12) {	
 					return "redirect:/projectmanager";
 				} else if (dbUser.getRoleId() == 13) {
 					return "redirect:/developer";
@@ -93,7 +96,6 @@ public class SessionController {
 			System.out.println("your otp is =>" + otp);
 			return "NewPassword";
 		}
-
 	}
 
 	@PostMapping("/updatepassword")
@@ -122,6 +124,13 @@ public class SessionController {
 		userDao.addUser(user);
 		// return "redirect:/getallusers";
 		return "Login";
+	}
+	
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate(); 
+		return "redirect:/login";
+		
 	}
 
 }

@@ -57,7 +57,6 @@ public class ProjectController {
 		ProjectBean project = projectDao.getProjectById(projectId);
 		model.addAttribute("project", project);
 		return "EditProject";
-
 	}
 
 	@PostMapping("/updateproject")

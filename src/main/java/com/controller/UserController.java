@@ -70,14 +70,14 @@ public class UserController {
 		return "User";
 	}
 
-	@PostMapping("/saveuser")
-	public String saveUser(UserBean user) {
+	@PostMapping("/saveuser1")
+	public String saveUser1(UserBean user) {
 		String plainPassword = user.getPassword();
 		String encPassword = bCryptPasswordEncoder.encode(plainPassword);
 		System.out.println(encPassword);
 		user.setPassword(encPassword);
 		userDao.addUser(user);
-		return "redirect:/getallusers";
+		return "Login";
 	}
 
 	@GetMapping("/getallusers")
