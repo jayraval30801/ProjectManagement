@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.bean.ProjectModuleBean;
 import com.bean.TaskBean;
 import com.bean.UserBean;
 
@@ -42,6 +43,10 @@ public class TaskDao {
 	public void updateTask(TaskBean task) {
 		stmt.update("update tasks set title=?,priority=?,description=?,totalminutes=?  where taskid=? ",
 				task.getTitle(), task.getPriority(), task.getDescription(), task.getTotalMinutes(), task.getTaskId());
+	}
+	public List<TaskBean> getAllTaskByModule(int moduleId) { 	
+		return stmt.query("select t.*,pm.modulename from tasks t,projectmodule pm where t.moduleid = pm.moduleid and t.moduleid  = ?",
+				new BeanPropertyRowMapper<TaskBean>(TaskBean.class),new Object[] {moduleId});
 	}
 
 }

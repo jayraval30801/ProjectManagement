@@ -16,6 +16,7 @@ import com.dao.ProjectDao;
 import com.dao.ProjectModuleDao;
 import com.dao.RoleDao;
 import com.dao.StatusDao;
+import com.dao.TaskDao;
 import com.dao.UserDao;
 
 @Controller
@@ -31,6 +32,8 @@ public class AdminController {
 	RoleDao roleDao;
 	@Autowired
 	ProjectModuleDao projectmoduleDao;
+	@Autowired
+	TaskDao taskDao;
 	@GetMapping("/admincontroller")
 	public String adminController(Model model, HttpSession session) {
 		
@@ -38,6 +41,7 @@ public class AdminController {
 		List<ProjectBean> projects = projectDao.getAllProjects();
 		
 		model.addAttribute("totalProjects", projects.size());
+		model.addAttribute("projects",projects);
 
 		List<UserBean> Developer = projectDao.getAllDeveloper();
 		model.addAttribute("totalDeveloper", Developer.size());
@@ -89,5 +93,20 @@ public class AdminController {
 		model.addAttribute("projects",projectDao.getAllProjects());		
 		return "ModuleReport";
 	}
+	@GetMapping("/taskreport")
+	public String getAllTasks(@RequestParam("moduleId") int moduleId ,Model model)
+	{
+		if(moduleId == 0)
+		{
+			model.addAttribute("tasks",taskDao.getAllTasks());
+		}else
+		{
+			model.addAttribute("tasks",taskDao.getAllTaskByModule(moduleId));
+		}
+		model.addAttribute("modules",projectmoduleDao.getAllModules());		
+		return "TaskReport";
+	}
+	
+
 
 }

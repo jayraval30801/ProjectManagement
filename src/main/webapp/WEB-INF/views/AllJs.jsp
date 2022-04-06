@@ -15,3 +15,7 @@
 <script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
 <script src="js/plugins-init/datatables.init.js"></script>
 <script src="js/custom.min.js"></script>
+<script src="js/dashboard/chat.js"></script>
+<script src="js/plugins-init/chartjs-init.js"></script>
+<script src="js/plugins-init/chartist-init.js"></script>
+<script src="js/plugins-init/flot-init.js"></script>

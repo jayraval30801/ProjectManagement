@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Reports Project</title>
+<title>Reports Module</title>
 <jsp:include page="AllCss.jsp"></jsp:include>
 </head>
 <body data-typography="poppins" data-theme-version="light"
@@ -33,14 +32,16 @@
 						fill="white"></path>
 				</svg>
 				<div class="svg-logo-path">
+					<a href="admincontroller">Project Management</a>
 					<div class="brand-title" width="74" height="22"></div>
 				</div>
 			</a>
 
 			<div class="nav-control">
 				<div class="hamburger">
-					<span class="line"></span><span class="line"></span><span
-						class="line"></span>
+					<span class="line"></span>
+					<span class="line"></span>
+					<span class="line"></span>
 				</div>
 			</div>
 		</div>
@@ -68,7 +69,7 @@
 				<div class="col12">
 					<div class="card ">
 						<div class="card-header btn-group mb-1">
-							<a href="login">New User</a>
+							<a href="newtask">New Task</a>
 						</div>
 						<button type="button" class="btn btn-primary"
 							onclick="exportPdf()">Export</button>
@@ -76,43 +77,45 @@
 						<div class="card-body">
 							<div class="table-responsive">
 								<div id="example_wrapper" class="dataTables_wrapper">
-									<table id="listProjects"
+									<table id="listTasks"
 										class="table table-stripped display dataTable"
 										style="min-width: 845px" role="grid"
 										aria-describedby="example_info">
 										<thead>
 											<tr>
-												<th>Title</th>
-												<th>Description</th>
-												<th>Technology</th>
-												<th>EstimatedHours</th>
-												<th>StartDate</th>
-												<th>CompletionDate</th>
-												<th>Status</th>
+												<td>TaskId</td>
+												<td>Task Name</td>
+												<td>ModuleId</td>
+												<td>ProjectId</td>
+												<td>Priority</td>
+												<td>Description</td>
+												<td>StatusId</td>
+												<td>Total Minutes</td>
 											</tr>
 										</thead>
 										<tbody>
-											<c:forEach items="${projects}" var="p">
+											<c:forEach items="${tasks}" var="u">
 												<tr>
-													<td>${p.projectName}</td>
-													<td>${p.description}</td>
-													<td>${p.technology}</td>
-													<td>${p.estimatedHours}</td>
-													<td>${p.startDate}</td>
-													<td>${p.endDate}</td>
-													<td>${p.statusName}</td>
+													<td>${u.taskId}</td>
+													<td>${u.title}</td>
+													<td>${u.moduleId}</td>
+													<td>${u.projectId}</td>
+													<td>${u.priority}</td>
+													<td>${u.description}</td>
+													<td>${u.statusId}</td>
+													<td>${u.totalMinutes}</td>
 												</tr>
 											</c:forEach>
 										</tbody>
 									</table>
-									<form action="projectreport">
+									<form action="taskreport">
 										<div class="form-group row">
-											<label class="col-sm-2 col-form-label">Select Status
+											<label class="col-sm-2 col-form-label">Select Module
 											</label>
 											<div class="col-sm-10">
-												<select name="statusId" class="form-control">
-													<c:forEach items="${status}" var="s">
-														<option value="${s.statusId}">${s.statusName}</option>
+												<select name="moduleId" class="form-control">
+													<c:forEach items="${modules}" var="s">
+														<option value="${s.moduleId}">${s.moduleName}</option>
 													</c:forEach>
 												</select>
 											</div>
@@ -150,7 +153,7 @@
 	<jsp:include page="AllJs.jsp"></jsp:include>
 	<script type="text/javascript">
 		function exportPdf() {
-			const element = document.getElementById('listProjects');
+			const element = document.getElementById('listTasks');
 			var opt = {
 				margin : 1,
 				filename : 'Report.pdf',
@@ -170,6 +173,5 @@
 			html2pdf().set(opt).from(element).save();
 		}
 	</script>
-
 </body>
 </html>
