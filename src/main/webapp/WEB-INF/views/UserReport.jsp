@@ -1,57 +1,148 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-  
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Reports Project</title>
 <jsp:include page="AllCss.jsp"></jsp:include>
 </head>
-<body>
+<body data-typography="poppins" data-theme-version="light"
+	data-layout="vertical" data-nav-headerbg="color_1"
+	data-headerbg="color_1" data-sidebar-style="overlay"
+	data-sibebarbg="color_1" data-sidebar-position="fixed"
+	data-header-position="fixed" data-container="wide" direction="ltr"
+	data-primary="color_1">
+	<!--**********************************
+        Main wrapper start
+    ***********************************-->
+	<div id="main-wrapper" class="show">
+		<!--**********************************
+            Nav header start
+        ***********************************-->
+		<div class="nav-header">
+			<a href="admincontroller" class="brand-logo"> <svg
+					class="logo-abbr" width="50" height="50" viewBox="0 0 50 50"
+					fill="none" xmlns="http://www.w3.org/2000/svg">
+					<rect class="svg-logo-rect" width="50" height="50" rx="6"
+						fill="#EB8153"></rect>
+					<path class="svg-logo-path"
+						d="M17.5158 25.8619L19.8088 25.2475L14.8746 11.1774C14.5189 9.84988 15.8701 9.0998 16.8205 9.75055L33.0924 22.2055C33.7045 22.5589 33.8512 24.0717 32.6444 24.3951L30.3514 25.0095L35.2856 39.0796C35.6973 40.1334 34.4431 41.2455 33.3397 40.5064L17.0678 28.0515C16.2057 27.2477 16.5504 26.1205 17.5158 25.8619ZM18.685 14.2955L22.2224 24.6007L29.4633 22.6605L18.685 14.2955ZM31.4751 35.9615L27.8171 25.6886L20.5762 27.6288L31.4751 35.9615Z"
+						fill="white"></path>
+				</svg>
+				<div class="svg-logo-path">
+					<a href="admincontroller">Project Management</a>
+					<div class="brand-title" width="74" height="22"></div>
+				</div>
+			</a>
 
-<h2>List Users</h2>
-
-	<a href="login">New User?</a>
-	<table border="1">
-		<tr>
-			<td>UserId</td>
-			<td>FirstName</td>
-			<td>Email</td>
-			<td>Password</td>
-			<td>RoleName</td>
-			<td colspan="2">Action</td>
-		</tr>
-		<c:forEach items="${users}" var="u">
-			<tr>
-				<td>${u.userId}</td>
-				<td>${u.firstName}</td>
-				<td>${u.email}</td>
-				<td>${u.password}</td>
-				<td>${u.roleName}</td>
-				<td><a href="deleteuser/${u.userId}">Delete</a></td>
-				<td><a href="edituser?userId=${u.userId}">Edit</a></td>
-			</tr>
-		</c:forEach>
-	</table>
-	<button  class="btn" onclick="exportPdf()">Export</button>	
-	<form action="userreport">
-		<div class="form-group row">
-			<label class="col-sm-2 col-form-label">Select Role</label>
-			<div class="col-sm-10">
-				<select name="roleId" class="form-control">
-					<c:forEach items="${role}" var="s">
-						<option value="${s.roleId}">${s.roleName}</option>
-					</c:forEach>
-				</select>
+			<div class="nav-control">
+				<div class="hamburger">
+					<span class="line"></span><span class="line"></span><span
+						class="line"></span>
+				</div>
 			</div>
 		</div>
-		<div class="modal-footer">
-			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			<button type="submit" class="btn btn-primary">Save changes</button>
+		<!--**********************************
+            Nav header end
+        ***********************************-->
+
+		<jsp:include page="AdminHeader.jsp"></jsp:include>
+		<div class="sub-header">
+			<div class="d-flex align-items-center flex-wrap mr-auto">
+				<h5 class="dashboard_bar">Admin Dashboard</h5>
+			</div>
 		</div>
-	</form>
+
+	</div>
+	</div>
+	<jsp:include page="AdminSideBar.jsp"></jsp:include>
+
+	<!--**********************************
+            Content body start
+        ***********************************-->
+	<div class="content-body" style="min-height: 876px;">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col12">
+					<div class="card ">
+						<div class="card-header btn-group mb-1">
+							<a href="login">New User</a>
+						</div>
+						<button type="button" class="btn btn-primary"
+							onclick="exportPdf()">Export</button>
+
+						<div class="card-body">
+							<div class="table-responsive">
+								<div id="example_wrapper" class="dataTables_wrapper">
+									<table id="listUsers"
+										class="table table-stripped display dataTable"
+										style="min-width: 845px" role="grid"
+										aria-describedby="example_info">
+										<thead>
+											<tr>
+												<td>UserId</td>
+												<td>FirstName</td>
+												<td>Email</td>
+												<td>Password</td>
+												<td>RoleName</td>
+											</tr>
+										</thead>
+										<tbody>
+											<c:forEach items="${users}" var="u">
+												<tr>
+													<td>${u.userId}</td>
+													<td>${u.firstName}</td>
+													<td>${u.email}</td>
+													<td>${u.password}</td>
+													<td>${u.roleName}</td>
+												</tr>
+											</c:forEach>
+										</tbody>
+									</table>
+									<form action="userreport">
+										<div class="form-group row">
+											<label class="col-sm-2 col-form-label">Select Role </label>
+											<div class="col-sm-10">
+												<select name="roleId" class="form-control">
+													<c:forEach items="${role}" var="s">
+														<option value="${s.roleId}">${s.roleName}</option>
+													</c:forEach>
+												</select>
+											</div>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary"
+												data-dismiss="modal">Close</button>
+											<button type="submit" class="btn btn-primary">Save
+												changes</button>
+										</div>
+									</form>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!--**********************************
+            Content body end
+        ***********************************-->
+	<jsp:include page="AdminFooter.jsp"></jsp:include>
+	</div>
+	<!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+	<!--**********************************
+        Scripts
+    ***********************************-->
 	<jsp:include page="AllJs.jsp"></jsp:include>
 	<script type="text/javascript">
 			function exportPdf() {
@@ -75,5 +166,6 @@
 				html2pdf().set(opt).from(element).save();
 			}
 		</script>
+
 </body>
 </html>
