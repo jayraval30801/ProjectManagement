@@ -2,7 +2,6 @@
 <%@page import="com.bean.ProjectBean"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -23,7 +22,7 @@
             Nav header start
         ***********************************-->
 		<div class="nav-header">
-		
+
 			<a href="admincontroller" class="brand-logo"> <svg
 					class="logo-abbr" width="50" height="50" viewBox="0 0 50 50"
 					fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -73,7 +72,7 @@
 									fill="#00ADA3"></path>
 								</svg>
 							<h2 class="text-black mb-2 font-w600">${totalprojectmanager}</h2>
-							<p class="mb-0 fs-14">
+							<p class="mb-0 fs-14">	
 								<svg width="29" height="22" viewBox="0 0 29 22" fill="none"
 									xmlns="http://www.w3.org/2000/svg">
 										<g filter="url(#filter0_d1)">
@@ -213,48 +212,7 @@
 							<div class="card-body">
 								<div id="flotBar2" class="flot-chart"
 									style="padding: 0px; position: relative;">
-									<canvas class="flot-base" width="630" height="314"
-										style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 504.6px; height: 251.2px;"></canvas>
-									<div class="flot-text"
-										style="position: absolute; inset: 0px; font-size: smaller; color: rgb(84, 84, 84);">
-										<div class="flot-x-axis flot-x1-axis xAxis x1Axis"
-											style="position: absolute; inset: 0px;">
-											<div
-												style="position: absolute; max-width: 63px; top: 238px; font: 400 10px/12px poppins, sans-serif; color: rgb(255, 255, 255); left: 19px; text-align: center;">0.0</div>
-											<div
-												style="position: absolute; max-width: 63px; top: 238px; font: 400 10px/12px poppins, sans-serif; color: rgb(255, 255, 255); left: 92px; text-align: center;">2.5</div>
-											<div
-												style="position: absolute; max-width: 63px; top: 238px; font: 400 10px/12px poppins, sans-serif; color: rgb(255, 255, 255); left: 165px; text-align: center;">5.0</div>
-											<div
-												style="position: absolute; max-width: 63px; top: 238px; font: 400 10px/12px poppins, sans-serif; color: rgb(255, 255, 255); left: 239px; text-align: center;">7.5</div>
-											<div
-												style="position: absolute; max-width: 63px; top: 238px; font: 400 10px/12px poppins, sans-serif; color: rgb(255, 255, 255); left: 309px; text-align: center;">10.0</div>
-											<div
-												style="position: absolute; max-width: 63px; top: 238px; font: 400 10px/12px poppins, sans-serif; color: rgb(255, 255, 255); left: 382px; text-align: center;">12.5</div>
-											<div
-												style="position: absolute; max-width: 63px; top: 238px; font: 400 10px/12px poppins, sans-serif; color: rgb(255, 255, 255); left: 456px; text-align: center;">15.0</div>
-										</div>
-										<div class="flot-y-axis flot-y1-axis yAxis y1Axis"
-											style="position: absolute; inset: 0px;">
-											<div
-												style="position: absolute; top: 227px; font: 400 10px/12px poppins, sans-serif; color: rgb(255, 255, 255); left: 7px; text-align: right;">0.0</div>
-											<div
-												style="position: absolute; top: 190px; font: 400 10px/12px poppins, sans-serif; color: rgb(255, 255, 255); left: 7px; text-align: right;">2.5</div>
-											<div
-												style="position: absolute; top: 152px; font: 400 10px/12px poppins, sans-serif; color: rgb(255, 255, 255); left: 7px; text-align: right;">5.0</div>
-											<div
-												style="position: absolute; top: 115px; font: 400 10px/12px poppins, sans-serif; color: rgb(255, 255, 255); left: 7px; text-align: right;">7.5</div>
-											<div
-												style="position: absolute; top: 77px; font: 400 10px/12px poppins, sans-serif; color: rgb(255, 255, 255); left: 1px; text-align: right;">10.0</div>
-											<div
-												style="position: absolute; top: 40px; font: 400 10px/12px poppins, sans-serif; color: rgb(255, 255, 255); left: 1px; text-align: right;">12.5</div>
-											<div
-												style="position: absolute; top: 2px; font: 400 10px/12px poppins, sans-serif; color: rgb(255, 255, 255); left: 1px; text-align: right;">15.0</div>
-										</div>
-									</div>
-									<canvas class="flot-overlay" width="630" height="314"
-										style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 504.6px; height: 251.2px;">
-									</canvas>
+									<canvas class="flot-base" width="630" height="314" id="myChart"></canvas>
 								</div>
 							</div>
 						</div>
@@ -262,9 +220,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	</div>
-	</div>
 	</div>
 
 	<!--**********************************
@@ -285,14 +240,52 @@
 	<%
 	List<ProjectBean> projects = (List<ProjectBean>) request.getAttribute("projects");
 	%>
-	<svg id="SvgjsSvg1001" width="2" height="0"
-		xmlns="http://www.w3.org/2000/svg" version="1.1"
-		xmlns:xlink="http://www.w3.org/1999/xlink"
-		xmlns:svgjs="http://svgjs.com/svgjs"
-		style="overflow: hidden; top: -100%; left: -100%; position: absolute; opacity: 0;">
-		<defs id="SvgjsDefs1002"></defs>
-		<polyline id="SvgjsPolyline1003" points="0,0"></polyline>
-		<path id="SvgjsPath1004"
-			d="M-1 326.1932791358947L-1 326.1932791358947C-1 326.1932791358947 71.400390625 326.1932791358947 71.400390625 326.1932791358947C71.400390625 326.1932791358947 142.80078125 326.1932791358947 142.80078125 326.1932791358947C142.80078125 326.1932791358947 214.201171875 326.1932791358947 214.201171875 326.1932791358947C214.201171875 326.1932791358947 285.6015625 326.1932791358947 285.6015625 326.1932791358947C285.6015625 326.1932791358947 357.001953125 326.1932791358947 357.001953125 326.1932791358947C357.001953125 326.1932791358947 428.40234375 326.1932791358947 428.40234375 326.1932791358947C428.40234375 326.1932791358947 499.80273437500006 326.1932791358947 499.80273437500006 326.1932791358947C499.80273437500006 326.1932791358947 571.203125 326.1932791358947 571.203125 326.1932791358947C571.203125 326.1932791358947 642.603515625 326.1932791358947 642.603515625 326.1932791358947C642.603515625 326.1932791358947 642.603515625 326.1932791358947 642.603515625 326.1932791358947 "></path></svg>
+	<script>
+		const ctx = document.getElementById('myChart').getContext('2d');
+		const myChart = new Chart(ctx,
+				{
+					type : 'bar',
+					data : {
+						labels : [ 
+								
+							<% for(ProjectBean p:projects){%>
+		    				'<%=p.getProjectName()%>',
+		    			
+		    			<%}%>
+						],
+						datasets : [ {
+							label : 'project-Hours',
+							data : [ 
+								<% for(ProjectBean p:projects){%>
+			    				<%=p.getEstimatedHours()%>,
+			    			<%}%>
+							],
+							backgroundColor : [ 'rgba(255, 99, 132, 0.2)',
+									'rgba(54, 162, 235, 0.2)',
+									'rgba(255, 206, 86, 0.2)',
+									'rgba(75, 192, 192, 0.2)',
+									'rgba(153, 102, 255, 0.2)',
+									'rgba(255, 159, 64, 0.2)' ],
+							borderColor : [ 'rgba(255, 99, 132, 1)',
+									'rgba(54, 162, 235, 1)',
+									'rgba(255, 206, 86, 1)',
+									'rgba(75, 192, 192, 1)',
+									'rgba(153, 102, 255, 1)',
+									'rgba(255, 159, 64, 1)' ],
+							borderWidth : 1
+						} ]
+					},
+					options : {
+						scales : {
+							y : {
+								beginAtZero : true
+							}
+						}
+					}
+				});
+	</script>
+
+
+
 </body>
 </html>

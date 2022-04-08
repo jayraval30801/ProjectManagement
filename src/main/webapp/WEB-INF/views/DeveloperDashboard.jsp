@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="com.bean.ProjectBean"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -162,7 +164,23 @@
 				</div>
 			</div>
 
-		
+			<div class="col-12">
+				<div class="row">
+					<div class="col-lg-6 col-sm-6">
+						<div class="card">
+							<div class="card-header">
+								<h4 class="card-title">Bar Chart</h4>
+							</div>
+							<div class="card-body">
+								<div id="flotBar2" class="flot-chart"
+									style="padding: 0px; position: relative;">
+									<canvas class="flot-base" width="630" height="314" id="myChart"></canvas>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 
@@ -182,6 +200,53 @@
     ***********************************-->
 	<jsp:include page="AllJs.jsp"></jsp:include>
 	<!-- Required vendors -->
+	<%
+	List<ProjectBean> projects = (List<ProjectBean>) request.getAttribute("projects");
+	%>
+	<script>
+		const ctx = document.getElementById('myChart').getContext('2d');
+		const myChart = new Chart(ctx,
+				{
+					type : 'bar',
+					data : {
+						labels : [ 
+								
+							<%for (ProjectBean p : projects) {%>
+		    				'<%=p.getProjectName()%>',
+		    			
+		    			<%}%>
+						],
+						datasets : [ {
+							label : 'project-Hours',
+							data : [ 
+								<%for (ProjectBean p : projects) {%>
+			    				<%=p.getEstimatedHours()%>,
+			    			<%}%>
+							],
+							backgroundColor : [ 'rgba(255, 99, 132, 0.2)',
+									'rgba(54, 162, 235, 0.2)',
+									'rgba(255, 206, 86, 0.2)',
+									'rgba(75, 192, 192, 0.2)',
+									'rgba(153, 102, 255, 0.2)',
+									'rgba(255, 159, 64, 0.2)' ],
+							borderColor : [ 'rgba(255, 99, 132, 1)',
+									'rgba(54, 162, 235, 1)',
+									'rgba(255, 206, 86, 1)',
+									'rgba(75, 192, 192, 1)',
+									'rgba(153, 102, 255, 1)',
+									'rgba(255, 159, 64, 1)' ],
+							borderWidth : 1
+						} ]
+					},
+					options : {
+						scales : {
+							y : {
+								beginAtZero : true
+							}
+						}
+					}
+				});
+	</script>
 
 	<svg id="SvgjsSvg1001" width="2" height="0"
 		xmlns="http://www.w3.org/2000/svg" version="1.1"

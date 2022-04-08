@@ -7,7 +7,6 @@
 <head>
 <jsp:include page="AllCss.jsp"></jsp:include>
 </head>
-<body>
 <body class="vh-100" data-typography="poppins"
 	data-theme-version="light" data-layout="vertical"
 	data-nav-headerbg="color_1" data-headerbg="color_1"

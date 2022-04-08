@@ -8,7 +8,7 @@
 							<div class="brand-title" width="74" height="22">
 								<a href="admincontroller">Project Management</a>
 							</div>
-						</div>
+						</div> 
 						<div class="input-group-append"></div>
 					</div>
 				</div>

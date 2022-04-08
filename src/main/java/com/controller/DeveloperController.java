@@ -30,7 +30,8 @@ public class DeveloperController {
 			
 			UserBean user = (UserBean) session.getAttribute("user");
 			List<ProjectBean> projects = projectDao.getAllProjects();
-			
+			model.addAttribute("projects",projects);
+
 			model.addAttribute("totalProjects", projects.size());
 
 			List<UserBean> Developer = projectDao.getAllDeveloper();

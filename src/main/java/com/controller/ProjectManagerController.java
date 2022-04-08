@@ -25,7 +25,8 @@ public class ProjectManagerController {
 			UserBean user = (UserBean) session.getAttribute("user");
 			List<ProjectBean> projects   = projectDao.getAllProjects();
 			model.addAttribute("totalProjects",projects.size());
-			
+			model.addAttribute("projects",projects);
+
 			List<UserBean> Developer = projectDao.getAllDeveloper();
 			model.addAttribute("totalDeveloper",Developer.size());
 			
