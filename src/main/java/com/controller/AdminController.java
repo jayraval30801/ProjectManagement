@@ -1,5 +1,9 @@
 package com.controller;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOError;
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -8,10 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.bean.ProjectBean;
 import com.bean.UserBean;
+import com.dao.ProfileDao;
 import com.dao.ProjectDao;
 import com.dao.ProjectModuleDao;
 import com.dao.RoleDao;
@@ -34,6 +41,49 @@ public class AdminController {
 	ProjectModuleDao projectmoduleDao;
 	@Autowired
 	TaskDao taskDao;
+	@Autowired
+	ProfileDao profileDao;
+	
+	@GetMapping("/uploadprofile")
+	public String uploadProfile()
+	{
+		
+		return "UploadProfile";
+	}
+	
+	@PostMapping("/saveprofile")
+	public String saveProfile(@RequestParam("profilePic") MultipartFile file,HttpSession session)
+	{
+		
+		System.out.println(file.getOriginalFilename());	
+		System.out.println(file.getSize());
+		UserBean user = (UserBean)session.getAttribute("user");
+		int userId =user.getUserId();
+		System.out.println(userId);
+		String path = "C:\\Users\\Jay Raval\\Documents\\workspace-spring-tool-suite-4-4.13.1.RELEASE\\ProjectManagement\\src\\main\\resources\\static\\images\\";
+		byte image[] = new byte[(int) file.getSize()];
+		try {
+			
+			File useFolder =new File(path,userId +"");
+			useFolder.mkdir();
+			
+			profileDao.updateProfile("/images/" + userId + "/" + file.getOriginalFilename() ,userId);
+			user.setProfilePic("/images/"+userId+"/"+file.getOriginalFilename());
+			session.setAttribute("user", user);
+			image = file.getBytes();
+			File f = new File(useFolder,file.getOriginalFilename());
+			f.createNewFile();
+			FileOutputStream fos = new FileOutputStream(f);
+			fos.write(image);
+			fos.close();
+		}
+		catch(IOException e)
+		{
+				e.printStackTrace();
+		}
+		return "UploadProfile";
+	}
+	
 	@GetMapping("/admincontroller")
 	public String adminController(Model model, HttpSession session) {
 		

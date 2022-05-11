@@ -34,22 +34,25 @@
 										<path
 									d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"
 									style="stroke-dasharray: 37, 57; stroke-dashoffset: 0;"></path></svg>
-					</a></li>
-					<li class="nav-item dropdown header-profile"><a
-						class="nav-link" href="#" role="button" data-toggle="dropdown">
-							<img src="images/profile/img_299586.jpg" width="20" alt="">
+						</a>
+					</li>
+					<li class="nav-item dropdown header-profile">
+					<a class="nav-link" href="#" role="button" data-toggle="dropdown">
+						<img src="${user.profilePic}"  width="20" alt="Pic-Error">
 							<div class="header-info">
-								<span></span> <small>${user.firstName}</small>
+								<span> 
+									<small>${user.firstName}</small>
+								</span>
 							</div>
 					</a>
 						<div class="dropdown-menu dropdown-menu-right">
-							<a href="app-profile.html" class="dropdown-item ai-icon"> <svg
+							<a href="uploadprofile" class="dropdown-item ai-icon"> <svg
 									id="icon-user1" xmlns="http://www.w3.org/2000/svg"
 									class="text-primary" width="18" height="18" viewBox="0 0 24 24"
 									fill="none" stroke="currentColor" stroke-width="2"
 									stroke-linecap="round" stroke-linejoin="round">
 											<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-											<circle cx="12" cy="7" r="4"></circle></svg> <span class="ml-2">Profile
+									<circle cx="12" cy="7" r="4"></circle></svg> <span class="ml-2">Profile
 							</span>
 							</a> <a href="logout" class="dropdown-item ai-icon"> <svg
 									id="icon-logout" xmlns="http://www.w3.org/2000/svg"

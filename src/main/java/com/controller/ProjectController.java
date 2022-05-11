@@ -52,8 +52,8 @@ public class ProjectController {
 	}
 
 	@GetMapping("/editproject")
-	public String editProject(@RequestParam("projectId") int projectId, Model model) {
-
+	public String editProject(@RequestParam("projectId") int projectId, Model model) 
+	{
 		ProjectBean project = projectDao.getProjectById(projectId);
 		model.addAttribute("project", project);
 		return "EditProject";

@@ -62,7 +62,7 @@
 		
 	</div>
 </div>
-		<jsp:include page="AdminSideBar.jsp"></jsp:include>
+		<jsp:include page="AdminSidebar.jsp"></jsp:include>
 
 		<!--**********************************
             Content body start
@@ -127,9 +127,7 @@
 	<script src="vendor/global/global.min.js"></script>
 	<script src="vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
 	<script src="vendor/chart.js/Chart.bundle.min.js"></script>
-
 	<script src="vendor/datatables/images/sort_arc_disabled.png"></script>
-
 	<script src="vendor/datatables/images/sort_arc.png"></script>
 	<script src="vendor/datatables/images/sort_both.png"></script>
 	<script src="vendor/datatables/images/sort_desc_disabled.png"></script>
@@ -137,12 +135,10 @@
 	<!-- Datatable -->
 	<script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
 	<script src="js/plugins-init/datatables.init.js"></script>
-
 	<script src="js/custom.min.js"></script>
 	<script src="js/deznav-init.js"></script>
 	<script src="js/demo.js"></script>
 	<script src="js/styleSwitcher.js"></script>
-
 	<script type="text/javascript">
 	$(document).ready(function() {
 		$('#listRoles').DataTable();

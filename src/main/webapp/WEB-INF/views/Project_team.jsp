@@ -19,7 +19,7 @@
 			<div class="pcoded-main-container">
 				<div class="pcoded-wrapper">
 
-					<jsp:include page="AdminSideBar.jsp"></jsp:include>
+					<jsp:include page="AdminSidebar.jsp"></jsp:include>
 
 					<div class="pcoded-content">
 

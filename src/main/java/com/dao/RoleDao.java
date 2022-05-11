@@ -36,7 +36,8 @@ public class RoleDao {
 		return role;
 	}
 
-	public void updateRole(RoleBean role) {
-		stmt.update("update role set rolename = ? where roleid=? ", role.getRoleName(), role.getRoleId());
-	}
+		public void updateRole(RoleBean role) {
+			stmt.update("update role set rolename = ? where roleid=? ", role.getRoleName(), role.getRoleId());
+		}
+		
 }

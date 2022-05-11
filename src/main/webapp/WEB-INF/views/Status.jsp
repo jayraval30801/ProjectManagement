@@ -52,7 +52,7 @@
 
 	</div>
 	</div>
-	<jsp:include page="AdminSideBar.jsp"></jsp:include>
+	<jsp:include page="AdminSidebar.jsp"></jsp:include>
 
 	<!--**********************************
             Content body start

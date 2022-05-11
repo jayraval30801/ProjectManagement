@@ -8,6 +8,16 @@ public class UserBean {
 	private int roleId;
 	private String roleName;
 	private int otp;
+	private String profilePic;
+	
+	public String getProfilePic() {
+		return profilePic;
+	}
+
+	public void setProfilePic(String profilePic) {
+		this.profilePic = profilePic;
+	}
+
 	public int getUserId() {
 		return userId;
 	}
